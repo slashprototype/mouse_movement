@@ -6,7 +6,10 @@ _Follow this instructions to know how to use this script_
 
 ```
 Combo keywords:
-"ctrl+
+"ctrl+." will terminate the while execution and re-execute is needed
+"ctrl+alt" Change btw Script activate/deactivated, deactivated is default
+"up, down, left, right" arrows move cursor position when script state is activated
+"shift" this key make a left-click when script state is activated
 ```
 
 
