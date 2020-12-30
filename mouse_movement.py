@@ -30,7 +30,7 @@ class Mouse():
 m1 = Mouse()
 key = ('up','down','left','right')
 
-while not keyboard.is_pressed('ctrl+shift+mayusc'):
+while not keyboard.is_pressed('ctrl+.'):
     
     if keyboard.is_pressed('ctrl+alt'):
         m1.activated=   not m1.activated
@@ -39,13 +39,10 @@ while not keyboard.is_pressed('ctrl+shift+mayusc'):
 
     if m1.activated:
         for x in key:
-
             if keyboard.is_pressed(x):
                 m1.move(x)
-
             if keyboard.is_pressed('shift'):
                 m1.click('left')
-
-            time.sleep(0.01)
+            time.sleep(0.002)
 
  
