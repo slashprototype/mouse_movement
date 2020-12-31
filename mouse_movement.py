@@ -5,7 +5,7 @@ import time
 
 class Mouse():
     activated = False
-    speed = 3
+    speed = 2
 
     def move(self, direction):
         flags, hcursor, (x,y) = win32gui.GetCursorInfo()
@@ -19,21 +19,25 @@ class Mouse():
             x+=self.speed
         win32api.SetCursorPos((x,y))
 
-
     def click(self, side):
-        if side == "left":
+        if side == 'ctrl':
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
             time.sleep(0.5)
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+        if side == 'alt':
+            win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0)
+            time.sleep(0.5)
+            win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP,0,0)
 
 #Main program
 m1 = Mouse()
 key = ('up','down','left','right')
+click= ('shift', 'ctrl')
 
 while not keyboard.is_pressed('ctrl+.'):
     
     if keyboard.is_pressed('ctrl+alt'):
-        m1.activated=   not m1.activated
+        m1.activated = not m1.activated
         print('keyboard script is: '+ str(m1.activated))
         time.sleep(0.5)
 
@@ -41,8 +45,9 @@ while not keyboard.is_pressed('ctrl+.'):
         for x in key:
             if keyboard.is_pressed(x):
                 m1.move(x)
-            if keyboard.is_pressed('shift'):
-                m1.click('left')
-            time.sleep(0.002)
+        for x in click:
+            if keyboard.is_pressed(x):
+                m1.click(x)
+        time.sleep(0.002)
 
- 
+
